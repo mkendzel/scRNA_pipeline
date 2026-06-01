@@ -8,7 +8,7 @@ library(clustree)
 invisible(lapply(list.files(here::here("R"), full.names = TRUE, pattern = "\\.R$"), source))
 
 #QC and SoupX adjusted data
-adjusted_list <- load_checkpoint("allData_MADqc_SoupX", dir = "YOUR_PROJECT_NAME/data/processed")
+adjusted_list <- load_checkpoint("allData_MADqc_SoupX", dir = "projects/YOUR_PROJECT_NAME/data/processed")
 
 # ---- Predict Multiplet (doublet) rate for DoubletFinder ----
 # Load Samples from experiment
@@ -159,10 +159,10 @@ doublet_list <- setNames(lapply(names(adjusted_list), function(nm) {
 
 
 #Save
-save_checkpoint(doublet_list, "allData_MADqc_SoupX_Doublet", dir = "data")
+save_checkpoint(doublet_list, "allData_MADqc_SoupX_Doublet", dir = "projects/YOUR_PROJECT_NAME/data/processed")
 
 # Optional load
-# doublet_list <- load_checkpoint("allData_MADqc_SoupX_Doublet", dir = "data")
+# doublet_list <- load_checkpoint("allData_MADqc_SoupX_Doublet", dir = "projects/YOUR_PROJECT_NAME/data/processed")
 
 
 doublet_umap_plots <- lapply(names(doublet_list), function(nm) {
@@ -177,7 +177,7 @@ doublet_umap_plots <- lapply(names(doublet_list), function(nm) {
   p <- DimPlot(obj, reduction = "umap", group.by = df_col) + ggtitle(title_text)
 
   filename <- paste0("UMAP_", nm, "_doublets_dims", dims_val, "_res", res_val, ".png")
-  ggsave(file.path("figures/doublets", filename), plot = p, width = 6, height = 5, dpi = 300)
+  ggsave(file.path("projects/YOUR_PROJECT_NAME/diagnostics/DoubletFinder/doublets", filename), plot = p, width = 6, height = 5, dpi = 300)
   p
 })
 
@@ -214,7 +214,7 @@ singlet_list <- lapply(doublet_list, function(obj) {
 names(singlet_list) <- names(doublet_list)
 
 #Save
-save_checkpoint(singlet_list, "singletData_MADqc_SoupX_DoubletFinder", dir = "data")
+save_checkpoint(singlet_list, "singletData", dir = "projects/YOUR_PROJECT_NAME/data/processed")
 
 #Plots
 umap_singlet_plots <- lapply(names(singlet_list), function(nm) {
@@ -229,7 +229,7 @@ umap_singlet_plots <- lapply(names(singlet_list), function(nm) {
 
   filename <- paste0("UMAP_", nm, "_singlets_dims", dims_val, "_res", res_val, ".png")
   ggsave(
-    filename = file.path("figures/singlets", filename),
+    filename = file.path("projects/YOUR_PROJECT_NAME/diagnostics/DoubletFinder/singlets", filename),
     plot = p,
     width = 6, height = 5, dpi = 300
   )
