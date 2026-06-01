@@ -185,4 +185,4 @@ ggsave("projects/YOUR_PROJECT_NAME/results/graphs/integrated/infected_sample.png
 ggsave("projects/YOUR_PROJECT_NAME/results/graphs/integrated/clusters_infected.png", clusters | infected, width = 12, height = 5)
 
 
-save_checkpoint(integrated.harmony, "integrated_harmony_normData", dir = "data")
+save_checkpoint(integrated.harmony, "integrated_harmony_normData", dir = "projects/YOUR_PROJECT_NAME/data/processed")
