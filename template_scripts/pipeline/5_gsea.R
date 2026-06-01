@@ -5,8 +5,10 @@ library(fgsea)
 # ---- Project functions ----
 invisible(lapply(list.files(here::here("R"), full.names = TRUE, pattern = "\\.R$"), source))
 ####
-# ---- Load merged data set ----
-combined <- load_checkpoint("merged_clustered_normData", dir = "data")
+# ---- Load merged or integrated data set ----
+# pick one
+combined <- load_checkpoint("merged_clustered_normData",  dir = "projects/YOUR_PROJECT_NAME/data/processed")
+combined <- load_checkpoint("integrated_harmony_normData", dir = "projects/YOUR_PROJECT_NAME/data/processed")
 
 # Check Sample Id names
 table(combined$sample_id)
