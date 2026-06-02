@@ -89,7 +89,8 @@ projects/YOUR_PROJECT_NAME/
 │   │   ├── sample_umaps/         Final per-sample UMAP figures
 │   │   ├── merged/               Figures from the merged object
 │   │   └── integrated/           Figures from the integrated object
-│   └── correlative_model/        Regression outputs and model checkpoints
+│   └── analysis
+│       ├── correlative_model/        Regression outputs and model checkpoints
 └── scripts/
     ├── pipeline/                 Run these in order (1 through 5)
     ├── figures/                  Figure scripts, run after the pipeline finishes
