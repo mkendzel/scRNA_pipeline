@@ -128,6 +128,5 @@ scRNA_pipeline/
 ├── template_scripts/     Master copies of all pipeline scripts
 ├── renv/                 Package library managed by renv
 ├── renv.lock             Locked package versions
-├── install_packages.R    One-time setup script
 └── scRNA_pipeline.Rproj  Open this in RStudio before running anything
 ```
